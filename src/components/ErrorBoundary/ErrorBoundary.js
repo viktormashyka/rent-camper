@@ -11,13 +11,12 @@ class ErrorBoundary extends Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    // Тут ви можете логувати помилку або виконувати інші дії
-    console.error(error, errorInfo);
+    console.error(error, errorInfo); // TODO: leave it for error message
   }
 
   render() {
     if (this.state.hasError) {
-      return <h1>Щось пішло не так. Будь ласка, спробуйте знову.</h1>;
+      return <h1>Whoops, something went wrong. Please try again.</h1>;
     }
 
     return this.props.children;

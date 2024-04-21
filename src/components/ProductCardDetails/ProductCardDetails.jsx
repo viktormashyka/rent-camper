@@ -16,7 +16,7 @@ import { Reviews } from 'components/Reviews/Reviews';
 
 import { useState } from 'react';
 
-const ProductCardDetails = ({ camper }) => {
+export const ProductCardDetails = ({ camper }) => {
   const [expandedComponent, setExpandedComponent] = useState(null);
 
   const toggleComponent = component => {
@@ -27,11 +27,10 @@ const ProductCardDetails = ({ camper }) => {
     }
   };
 
-  // const formattedPrice = camper.price ? `\u20AC${camper.price}` : 'Unknown';
   return (
     <YStack style={{ padding: 24, gap: 24, borderRadius: 20, borderWidth: 1 }}>
       <YStack style={{ gap: 8, justifyContent: 'flex-start' }}>
-        <Heading>{camper.name ?? 'Unknown'}</Heading>
+        <Heading>{(camper && camper.name) ?? 'Unknown'}</Heading>
         <XStack>
           <XStack style={{ gap: 4, marginRight: 16, alignItems: 'center' }}>
             <RatingSvg width="16" height="16" />
@@ -109,5 +108,3 @@ const ProductCardDetails = ({ camper }) => {
     </YStack>
   );
 };
-
-export default ProductCardDetails;

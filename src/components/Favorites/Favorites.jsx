@@ -7,24 +7,26 @@ import {
   selectCampersItems,
 } from 'store/selectors';
 import { YStack, XStack, Subheading } from 'style/common.styled';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { fetchCampers } from '../../store/operations';
 import { SearchBar } from 'components/SearchBar/SearchBar';
+import { useMemo } from 'react';
 
 const Favorites = () => {
   const dispatch = useDispatch();
   const campers = useSelector(selectCampersItems);
   const isLoading = useSelector(selectCampersIsLoading);
   const error = useSelector(selectCampersError);
-  const [favoriteCampers, setFavoriteCampers] = useState([]);
 
   useEffect(() => {
     dispatch(fetchCampers());
   }, [dispatch]);
 
-  useEffect(() => {
-    setFavoriteCampers(campers.filter(camper => camper.isFavorite === true));
-  }, [campers]);
+  const favoriteCampers = useMemo(
+    () =>
+      campers ? campers.filter(camper => camper && camper.isFavorite) : [],
+    [campers]
+  );
 
   return (
     <YStack style={{ gap: 16 }}>
@@ -33,7 +35,7 @@ const Favorites = () => {
       {!error && !isLoading && campers.length > 0 && (
         <XStack style={{ gap: 64 }}>
           <SearchBar />
-          {favoriteCampers > 0 ? (
+          {favoriteCampers.length > 0 ? (
             <ProductList campers={favoriteCampers} />
           ) : (
             <Subheading>

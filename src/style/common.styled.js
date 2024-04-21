@@ -71,6 +71,24 @@ export const Button = styled.button`
   color: ${props => (props.disabled ? '#666' : '#FFFFFF')};
 `;
 
+export const ButtonSecondary = styled.button`
+  display: flex;
+  padding: 16px 32px 16px 32px;
+  border-radius: 200px;
+
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: -0.005em;
+  text-align: left;
+  background: #fff;
+  border-style: solid;
+  border-width: 1px;
+  border-color: ${props => (props.disabled ? '#47546733' : '#E44848')};
+  color: #101828;
+`;
+
 export const Separator = styled.div`
   width: 100%;
   height: 1px;

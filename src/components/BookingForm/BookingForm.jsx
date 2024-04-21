@@ -57,7 +57,7 @@ export const BookingForm = () => {
     e.preventDefault();
     if (validateName() && validateEmail() && validateDate()) {
       const formData = { name, email, date, comment };
-      console.log(formData);
+      console.log(formData); // TODO: remove it after adding functionality sending data to backend
       setName('');
       setEmail('');
       setDate('');

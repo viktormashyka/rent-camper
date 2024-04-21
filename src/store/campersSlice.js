@@ -21,11 +21,13 @@ const handleFulfilledAddCamper = (state, action) => {
   state.isLoading = false;
 };
 const handleFulfilledUpdateCamper = (state, action) => {
-  console.log('state => ', state, 'action => ', action);
-  const index = state.items.findIndex(
-    camper => camper.id === action.payload.id
-  );
-  state.items.splice(index, 1, action.payload.body);
+  const payload = action.payload;
+  if (payload && payload.id) {
+    const index = state.items.findIndex(camper => camper.id === payload.id);
+    if (index !== -1) {
+      state.items.splice(index, 1, payload.body);
+    }
+  }
   state.isLoading = false;
 };
 const handleFulfilledDeleteCamper = (state, action) => {

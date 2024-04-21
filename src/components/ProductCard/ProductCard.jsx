@@ -11,20 +11,22 @@ import { ReactComponent as HeartSvg } from '../../images/icons/heart.svg';
 import { ReactComponent as MapPinSvg } from '../../images/icons/map-pin.svg';
 import { ReactComponent as RatingSvg } from '../../images/icons/rating.svg';
 
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { CardCatalogList } from 'components/CardCatalogList/CardCatalogList';
 import { Modal } from 'components/Modal/Modal';
-import ProductCardDetails from 'components/ProductCardDetails/ProductCardDetails';
+import { ProductCardDetails } from 'components/ProductCardDetails/ProductCardDetails';
 import { updateCamper } from '../../store/operations';
 
-const ProductCard = ({ camper, key }) => {
-  const [isFavorite, setIsFavorite] = useState(false);
+export const ProductCard = ({ camper }) => {
+  const [isFavorite, setIsFavorite] = useState(
+    () => (camper && camper.isFavorite) ?? false
+  );
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   const dispatch = useDispatch();
 
-  const toggleFavorite = () => {
+  const toggleFavorite = useCallback(() => {
     setIsFavorite(prev => !prev);
     dispatch(
       updateCamper({
@@ -32,11 +34,15 @@ const ProductCard = ({ camper, key }) => {
         body: { ...camper, isFavorite: !isFavorite },
       })
     );
-  };
+  }, [camper, dispatch, isFavorite, setIsFavorite]);
 
   const handleModal = () => {
     setIsOpenModal(prev => !prev);
   };
+
+  if (!camper || !camper.id) {
+    return null; // Render nothing if camper is undefined or doesn't have an id
+  }
 
   return (
     <>
@@ -49,7 +55,7 @@ const ProductCard = ({ camper, key }) => {
           borderStyle: 'solid',
           borderColor: '#10182833',
         }}
-        key={camper?.id}
+        key={camper.id}
       >
         <Stack
           style={{
@@ -133,5 +139,3 @@ const ProductCard = ({ camper, key }) => {
     </>
   );
 };
-
-export default ProductCard;
