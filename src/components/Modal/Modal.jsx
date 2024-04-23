@@ -1,12 +1,11 @@
-import { createPortal } from 'react-dom';
-import { useEffect } from 'react';
-
 import {
   Backdrop,
   ModalWrapper,
   ButtonClose,
   ModalContainer,
 } from './Modal.styled';
+import { createPortal } from 'react-dom';
+import { useEffect } from 'react';
 
 const modalRoot = document.querySelector('#modal-root');
 

@@ -69,6 +69,8 @@ export const Button = styled.button`
 
   background: ${props => (props.disabled ? '#ccc' : '#E44848')};
   color: ${props => (props.disabled ? '#666' : '#FFFFFF')};
+
+  cursor: pointer;
 `;
 
 export const ButtonSecondary = styled.button`
@@ -87,6 +89,19 @@ export const ButtonSecondary = styled.button`
   border-width: 1px;
   border-color: ${props => (props.disabled ? '#47546733' : '#E44848')};
   color: #101828;
+
+  cursor: pointer;
+`;
+
+export const ButtonUnderlined = styled.div`
+  display: flex;
+  padding-bottom: 24px;
+
+  border-bottom-width: 5px;
+  border-bottom-style: solid;
+  background-color: #fff;
+
+  cursor: pointer;
 `;
 
 export const Separator = styled.div`

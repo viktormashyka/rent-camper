@@ -35,6 +35,8 @@ export const ButtonClose = styled.span`
   right: 20px;
   top: 20px;
   cursor: pointer;
+  width: 32px;
+  height: 32px;
 `;
 export const ModalContainer = styled.div`
   display: flex;

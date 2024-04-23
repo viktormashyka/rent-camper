@@ -7,18 +7,17 @@ import {
   YStack,
   Button,
 } from '../../style/common.styled';
-import { ReactComponent as HeartSvg } from '../../images/icons/heart.svg';
-import { ReactComponent as MapPinSvg } from '../../images/icons/map-pin.svg';
-import { ReactComponent as RatingSvg } from '../../images/icons/rating.svg';
-
 import { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { CardCatalogList } from 'components/CardCatalogList/CardCatalogList';
 import { Modal } from 'components/Modal/Modal';
 import { ProductCardDetails } from 'components/ProductCardDetails/ProductCardDetails';
 import { updateCamper } from '../../store/operations';
+import { ReactComponent as HeartSvg } from '../../images/icons/heart.svg';
+import { ReactComponent as MapPinSvg } from '../../images/icons/map-pin.svg';
+import { ReactComponent as RatingSvg } from '../../images/icons/rating.svg';
 
-export const ProductCard = ({ camper }) => {
+export const ProductCard = ({ camper, key }) => {
   const [isFavorite, setIsFavorite] = useState(
     () => (camper && camper.isFavorite) ?? false
   );
@@ -34,14 +33,14 @@ export const ProductCard = ({ camper }) => {
         body: { ...camper, isFavorite: !isFavorite },
       })
     );
-  }, [camper, dispatch, isFavorite, setIsFavorite]);
+  }, [camper, dispatch, isFavorite]);
 
   const handleModal = () => {
     setIsOpenModal(prev => !prev);
   };
 
   if (!camper || !camper.id) {
-    return null; // Render nothing if camper is undefined or doesn't have an id
+    return null;
   }
 
   return (
@@ -55,7 +54,7 @@ export const ProductCard = ({ camper }) => {
           borderStyle: 'solid',
           borderColor: '#10182833',
         }}
-        key={camper.id}
+        key={key}
       >
         <Stack
           style={{
@@ -88,6 +87,7 @@ export const ProductCard = ({ camper }) => {
                     stroke: camper && camper.isFavorite ? '#E44848' : '#101828',
                     fill:
                       camper && camper.isFavorite ? '#E44848' : 'transparent',
+                    cursor: 'pointer',
                   }}
                 />
               </XStack>

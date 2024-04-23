@@ -1,4 +1,4 @@
-import { XStack, YStack, Text, Heading, Subheading } from 'style/common.styled';
+import { XStack, YStack, Heading, Subheading } from 'style/common.styled';
 import { ServiceCard } from 'components/ServiceCard/ServiceCard';
 
 const Home = () => {

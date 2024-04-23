@@ -23,9 +23,9 @@ const handleFulfilledAddCamper = (state, action) => {
 const handleFulfilledUpdateCamper = (state, action) => {
   const payload = action.payload;
   if (payload && payload.id) {
-    const index = state.items.findIndex(camper => camper.id === payload.id);
+    const index = state.items.findIndex(camper => camper?.id === payload.id);
     if (index !== -1) {
-      state.items.splice(index, 1, payload.body);
+      state.items[index] = payload.body;
     }
   }
   state.isLoading = false;

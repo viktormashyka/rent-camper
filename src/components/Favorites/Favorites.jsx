@@ -1,3 +1,5 @@
+import { YStack, XStack, Subheading } from 'style/common.styled';
+import { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Loader } from 'components/Loader/Loader';
 import { ProductList } from 'components/ProductList/ProductList';
@@ -6,11 +8,7 @@ import {
   selectCampersIsLoading,
   selectCampersItems,
 } from 'store/selectors';
-import { YStack, XStack, Subheading } from 'style/common.styled';
-import { useEffect } from 'react';
 import { fetchCampers } from '../../store/operations';
-import { SearchBar } from 'components/SearchBar/SearchBar';
-import { useMemo } from 'react';
 
 const Favorites = () => {
   const dispatch = useDispatch();
@@ -34,7 +32,6 @@ const Favorites = () => {
       {isLoading && <Loader />}
       {!error && !isLoading && campers.length > 0 && (
         <XStack style={{ gap: 64 }}>
-          <SearchBar />
           {favoriteCampers.length > 0 ? (
             <ProductList campers={favoriteCampers} />
           ) : (

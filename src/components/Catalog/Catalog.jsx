@@ -1,3 +1,5 @@
+import { XStack, YStack } from 'style/common.styled';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Loader } from 'components/Loader/Loader';
 import { ProductList } from 'components/ProductList/ProductList';
@@ -6,9 +8,6 @@ import {
   selectCampersIsLoading,
   selectCampersItems,
 } from 'store/selectors';
-import { XStack, YStack } from 'style/common.styled';
-import { SearchBar } from 'components/SearchBar/SearchBar';
-import { useEffect } from 'react';
 import { fetchCampers } from '../../store/operations';
 
 const Catalog = () => {
@@ -27,7 +26,6 @@ const Catalog = () => {
       {isLoading && <Loader />}
       {!error && !isLoading && campers.length > 0 && (
         <XStack style={{ gap: 64 }}>
-          <SearchBar />
           <ProductList campers={campers} />
         </XStack>
       )}

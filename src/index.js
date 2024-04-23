@@ -11,7 +11,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
       <ErrorBoundary>
-        <BrowserRouter basename="/">
+        <BrowserRouter basename="/rent-camper">
           <App />
         </BrowserRouter>
       </ErrorBoundary>

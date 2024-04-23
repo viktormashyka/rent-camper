@@ -1,17 +1,13 @@
-import { useState } from 'react';
 import {
-  Image,
   Text,
-  Heading,
-  XStack,
-  Stack,
   YStack,
   Button,
   Subheading,
-  Separator,
   InputField,
   TextAreaField,
+  XStack,
 } from '../../style/common.styled';
+import { useState } from 'react';
 
 export const BookingForm = () => {
   const [name, setName] = useState('');
@@ -140,7 +136,7 @@ export const BookingForm = () => {
           onChange={handleChange}
         />
       </YStack>
-      <Stack>
+      <XStack style={{ alignItems: 'center', gap: 24 }}>
         <Button
           onClick={handleSubmit}
           disabled={
@@ -149,7 +145,8 @@ export const BookingForm = () => {
         >
           Send
         </Button>
-      </Stack>
+        <Text style={{ color: '#10182899' }}>* fields required</Text>
+      </XStack>
     </YStack>
   );
 };

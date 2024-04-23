@@ -1,4 +1,3 @@
-import { BookingForm } from 'components/BookingForm/BookingForm';
 import {
   Text,
   XStack,
@@ -6,13 +5,14 @@ import {
   Subheading,
   Separator,
 } from '../../style/common.styled';
-import { CardCatalogList } from 'components/CardCatalogList/CardCatalogList';
+import { BookingForm } from 'components/BookingForm/BookingForm';
+import { CardCatalogListFeatures } from 'components/CardCatalogListFeatures/CardCatalogListFeatures';
 
 export const Features = ({ camper }) => {
   return (
     <XStack style={{ gap: 24 }}>
       <YStack style={{ width: 430, gap: 44 }}>
-        <CardCatalogList camper={camper} />
+        <CardCatalogListFeatures camper={camper}/>
         <YStack>
           <Subheading>Vehicle details</Subheading>
           <Separator style={{ marginTop: 24, marginBottom: 24 }} />

@@ -30,7 +30,7 @@ export const SearchBar = () => {
   };
   return (
     <YStack style={{ width: 360, gap: 24 }}>
-      {/* <div>
+      <div>
         <label>
           Find camper by name
           <input
@@ -42,7 +42,7 @@ export const SearchBar = () => {
             onChange={handleChange}
           />
         </label>
-      </div> */}
+      </div>
 
       {error && <p>Whoops, something went wrong: {error.message}</p>}
       {isLoading && <Loader />}

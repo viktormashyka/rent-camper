@@ -5,16 +5,14 @@ import {
   XStack,
   Stack,
   YStack,
-  Button,
+  ButtonUnderlined,
+  Subheading,
 } from '../../style/common.styled';
-
-import { ReactComponent as MapPinSvg } from '../../images/icons/map-pin.svg';
-import { ReactComponent as RatingSvg } from '../../images/icons/rating.svg';
-
+import { useState } from 'react';
 import { Features } from 'components/Features/Features';
 import { Reviews } from 'components/Reviews/Reviews';
-
-import { useState } from 'react';
+import { ReactComponent as MapPinSvg } from '../../images/icons/map-pin.svg';
+import { ReactComponent as RatingSvg } from '../../images/icons/rating.svg';
 
 export const ProductCardDetails = ({ camper }) => {
   const [expandedComponent, setExpandedComponent] = useState(null);
@@ -60,7 +58,7 @@ export const ProductCardDetails = ({ camper }) => {
       >
         {camper.gallery &&
           camper.gallery.length > 0 &&
-          camper.gallery.map(image => (
+          camper.gallery.map((image, index) => (
             <Stack
               style={{
                 borderRadius: 10,
@@ -68,6 +66,7 @@ export const ProductCardDetails = ({ camper }) => {
                 width: 290,
                 height: 310,
               }}
+              key={camper?.name + index}
             >
               <Image
                 src={image ? `${image}` : 'https://via.placeholder.com/290x310'}
@@ -80,8 +79,8 @@ export const ProductCardDetails = ({ camper }) => {
       <Text
         style={{
           color: ' #475467',
-          // maxHeight: 80,
-          // overflowY: 'auto',
+          maxHeight: 80,
+          overflowY: 'auto',
         }}
       >
         {camper.description ?? 'Description not provided'}
@@ -89,8 +88,24 @@ export const ProductCardDetails = ({ camper }) => {
 
       <YStack style={{ gap: 44 }}>
         <XStack style={{ gap: 40 }}>
-          <Button onClick={() => toggleComponent('features')}>Features</Button>
-          <Button onClick={() => toggleComponent('reviews')}>Reviews</Button>
+          <ButtonUnderlined
+            onClick={() => toggleComponent('features')}
+            style={{
+              borderBottomColor:
+                expandedComponent === 'features' ? '#E44848' : 'transparent',
+            }}
+          >
+            <Subheading>Features</Subheading>
+          </ButtonUnderlined>
+          <ButtonUnderlined
+            onClick={() => toggleComponent('reviews')}
+            style={{
+              borderBottomColor:
+                expandedComponent === 'reviews' ? '#E44848' : 'transparent',
+            }}
+          >
+            <Subheading>Reviews</Subheading>
+          </ButtonUnderlined>
         </XStack>
 
         {expandedComponent === 'features' && (

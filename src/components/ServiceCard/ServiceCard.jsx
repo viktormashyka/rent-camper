@@ -1,11 +1,10 @@
-import React from 'react';
 import {
   ServiceCardContainer,
   ServiceCardIcon,
   ServiceCardTitle,
   ServiceCardDescription,
 } from './ServiceCard.styled';
-
+import React from 'react';
 import { ReactComponent as UsersSvg } from '../../images/icons/users.svg';
 import { ReactComponent as TransmissionSvg } from '../../images/icons/transmission.svg';
 import { ReactComponent as RouteSvg } from '../../images/icons/route.svg';
