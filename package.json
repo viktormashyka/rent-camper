@@ -2,6 +2,7 @@
   "name": "rent-camper",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://viktormashyka.github.io/rent-camper/",
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.3",
     "axios": "^1.6.7",

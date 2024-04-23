@@ -55,7 +55,7 @@ of your repository in the `basename` prop. Slashes at the beginning and end of
 the line are required.
 
 ```jsx
-<BrowserRouter basename="/rent-camper/">
+<BrowserRouter basename="/rent-camper">
   <App />
 </BrowserRouter>
 ```
